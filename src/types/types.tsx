@@ -1,4 +1,4 @@
-export type Planet = {
+export type IPlanet = {
   name: string;
   rotation_period: string;
   orbital_period: string;
@@ -13,4 +13,11 @@ export type Planet = {
   created: string;
   edited: string;
   url: string;
+  [key: string]: any;
+};
+
+export type IFilter = {
+  columnFilter: string;
+  comparisonFilter: string;
+  valueFilter: string;
 };
