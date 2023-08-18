@@ -88,7 +88,7 @@ function Table() {
         <button onClick={ handleFilterClick } data-testid="button-filter">Filtrar</button>
 
         {/* filter return */}
-        <section>
+        <section data-testid="filter-return">
           <ul>
             { filterReturn.map((output, index) => (
               <li key={ index }>{output}</li>

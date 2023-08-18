@@ -8,7 +8,7 @@ export type IPlanet = {
   terrain: string;
   surface_water: string;
   population: string;
-  residents: string[];
+  residents?: string[];
   films: string[];
   created: string;
   edited: string;
