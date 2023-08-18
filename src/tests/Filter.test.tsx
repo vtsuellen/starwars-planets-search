@@ -252,7 +252,6 @@ describe('handleFilterChange', () => {
    render(<Table />)
 
    const input = screen.getByTestId('name-filter');
-
    expect(input).toBeInTheDocument();
 
    userEvent.type(input, 'Hoth');
