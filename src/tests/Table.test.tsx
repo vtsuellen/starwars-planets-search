@@ -1,8 +1,15 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import Table from '../components/table';
+import { vi } from 'vitest';
+import { returnData } from './mock/apiPlanetsMock';
 
 describe('Componente Table', () => {
+  beforeEach(() => {
+    global.fetch = vi.fn().mockResolvedValue({
+      json: vi.fn().mockResolvedValue(returnData),
+    });
+  });
   test('Renderiza as colunas da tabela', () => {
     render(<Table />);
 
