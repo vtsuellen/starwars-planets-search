@@ -11,6 +11,10 @@ function Table() {
   const [valueFilter, setValueFilter] = useState('0');
   const [filter, setFilter] = useState<IFilter[]>([]);
   const [filterReturn, setFilterReturn] = useState<string[]>([]);
+  const [selectedColumns, setSelectedColumns] = useState<string[]>([]);
+
+  const options = ['population',
+    'orbital_period', 'diameter', 'rotation_period', 'surface_water'];
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,6 +39,9 @@ function Table() {
       `${valueFilter}`,
     ];
     setFilterReturn(newReturnOutput);
+
+    // Update selected columns
+    setSelectedColumns([...selectedColumns, columnFilter]);
 
     // Reset filter values
     setColumnFilter('population');
@@ -62,11 +69,13 @@ function Table() {
           value={ columnFilter }
           onChange={ (e) => setColumnFilter(e.target.value) }
         >
-          <option value="population">population</option>
-          <option value="orbital_period">orbital_period</option>
-          <option value="diameter">diameter</option>
-          <option value="rotation_period">rotation_period</option>
-          <option value="surface_water">surface_water</option>
+          { options
+            .filter((column) => !selectedColumns.includes(column))
+            .map((column) => (
+              <option key={ column } value={ column }>
+                {column}
+              </option>
+            ))}
         </select>
 
         <select
