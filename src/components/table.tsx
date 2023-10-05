@@ -26,12 +26,14 @@ function Table() {
   }, []);
 
   const handleFilterClick = () => {
+    // Adiciona um novo filtro ao estado
     setFilter([
       ...filter,
       { columnFilter, comparisonFilter, valueFilter },
     ]);
 
     // Update the return output
+    // Atualiza a saída de retorno
     const newReturnOutput = [
       ...filterReturn,
       `${columnFilter}`,
@@ -41,9 +43,11 @@ function Table() {
     setFilterReturn(newReturnOutput);
 
     // Update selected columns
+    // Atualiza as colunas selecionadas
     setSelectedColumns([...selectedColumns, columnFilter]);
 
     // Reset filter values
+    // Reseta os valores dos filtros para valores padrão
     setColumnFilter('population');
     setComparisonFilter('maior que');
     setValueFilter('0');
@@ -69,6 +73,7 @@ function Table() {
           value={ columnFilter }
           onChange={ (e) => setColumnFilter(e.target.value) }
         >
+          {/* preenche de forma dinamica */}
           { options
             .filter((column) => !selectedColumns.includes(column))
             .map((column) => (

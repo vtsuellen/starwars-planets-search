@@ -7,6 +7,7 @@ const fetchPlanets = async () => {
   // Remover a coluna 'residents' de cada planeta
   const planetsWithoutResidents = data.results.map((planet: IPlanet) => {
     const { residents, ...planetWithoutResidents } = planet;
+    // Basicamente, ele está extraindo a propriedade residents do objeto planet e criando um novo objeto chamado planetWithoutResidents que contém todas as outras propriedades do objeto planet, exceto residents.
     return planetWithoutResidents;
   });
 
@@ -14,3 +15,10 @@ const fetchPlanets = async () => {
 };
 
 export default fetchPlanets;
+
+// Outra forma de retirar a coluna residents
+
+// const planetsWithoutResidents = data.results.map((planet: IPlanet) => {
+//   delete planet.residents;
+//   return planet;
+// });
